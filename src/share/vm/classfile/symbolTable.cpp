@@ -558,7 +558,7 @@ oop StringTable::lookup(Symbol* symbol) {
 }
 
 
-oop StringTable::intern(Handle string_or_null, jchar* name,
+oop StringTable::intern(Handle string_or_null, jchar* name,   //<---------------this-------------------------------
                         int len, TRAPS) {
   unsigned int hashValue = java_lang_String::hash_string(name, len);
   int index = the_table()->hash_to_index(hashValue);

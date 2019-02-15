@@ -3686,8 +3686,10 @@ JVM_ENTRY(jstring, JVM_InternString(JNIEnv *env, jstring str))
   JVMWrapper("JVM_InternString");
   JvmtiVMObjectAllocEventCollector oam;
   if (str == NULL) return NULL;
+  //通过JNIHandles::resolve_non_null函数转成 JVM 层的 oop 指针
   oop string = JNIHandles::resolve_non_null(str);
   oop result = StringTable::intern(string, CHECK_NULL);
+  //通过JNIHandles::make_local转换成 Java 层的对象并返回。
   return (jstring) JNIHandles::make_local(env, result);
 JVM_END
 

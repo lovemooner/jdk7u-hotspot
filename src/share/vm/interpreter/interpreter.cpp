@@ -329,7 +329,7 @@ address AbstractInterpreter::deopt_continue_after_entry(methodOop method, addres
       break;
     }
 
-    case Bytecodes::_ldc   :
+    case	::_ldc   :
     case Bytecodes::_ldc_w : // fall through
     case Bytecodes::_ldc2_w:
       {
